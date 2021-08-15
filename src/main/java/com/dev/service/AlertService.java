@@ -1,9 +1,11 @@
 package com.dev.service;
 
 import com.dev.type.AlertStatus;
+import com.dev.type.Summary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Arrays;
 
@@ -40,4 +42,7 @@ public class AlertService {
         return  alertStatus;
     }
 
+    public Summary getTotalSummary(){
+        return coronovirusTrackerDataProvider.getTotalSummary();
+    }
 }

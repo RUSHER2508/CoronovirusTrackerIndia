@@ -2,6 +2,7 @@ package com.dev.service;
 
 import com.dev.type.CoronoVirusDataProvider;
 import com.dev.type.Regional;
+import com.dev.type.Summary;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.bind.Name;
@@ -23,4 +24,8 @@ public class CoronovirusTrackerDataProvider {
         return  data.getData().getRegional().stream().filter(stateInformation -> stateInformation.getLoc().equalsIgnoreCase(state)).findAny().orElse(new Regional());
     }
 
+    public Summary getTotalSummary(){
+       CoronoVirusDataProvider dataProvider= restTemplate.getForObject(url,CoronoVirusDataProvider.class);
+       return dataProvider.getData().getSummary();
+    }
 }
